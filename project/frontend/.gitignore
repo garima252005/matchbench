@@ -1,0 +1,22 @@
+# secrets
+.env
+**/.env
+
+# deps
+node_modules/
+**/node_modules/
+
+# build output
+dist/
+**/dist/
+
+# EB / AWS
+.elasticbeanstalk/
+**/.elasticbeanstalk/
+
+# misc
+*.log
+.DS_Store
+back.zip
+matchbench_fixed.zip
+project/backend/back.zip

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matchbench — Student Skill &amp; Project Matching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand"><span class="dot"></span>Matchbench<small>skill × project</small></div>
+    <div class="progress-graph" id="progressGraph"></div>
+  </header>
+
+  <!-- STEP 1 -->
+  <section class="step active" id="step1">
+    <div class="eyebrow">01 / Profile</div>
+    <h1>Tell us who's building.</h1>
+    <p class="sub">Your course and branch decide the skill set and project pool we'll draw from next.</p>
+    <div class="panel">
+      <div class="field">
+        <label>Full name<span class="req">*</span></label>
+        <input type="text" id="inpName" placeholder="e.g. Ananya Sharma" autocomplete="off">
+      </div>
+      <div class="grid2">
+        <div class="field">
+          <label>Course<span class="req">*</span></label>
+          <select id="inpCourse">
+            <option value="" disabled selected>Select course</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Branch / Specialization<span class="req">*</span></label>
+          <select id="inpBranch" disabled>
+            <option value="" disabled selected>Select course first</option>
+          </select>
+        </div>
+      </div>
+      <div class="field" id="courseOtherWrap" style="display:none;">
+        <label>Please specify your course<span class="req">*</span></label>
+        <input type="text" id="inpCourseOther" placeholder="e.g. Diploma in Data Science" autocomplete="off">
+      </div>
+      <div class="field" id="branchOtherWrap" style="display:none;">
+        <label>Please specify your branch / specialization<span class="req">*</span></label>
+        <input type="text" id="inpBranchOther" placeholder="e.g. Mechatronics" autocomplete="off">
+      </div>
+      <div class="actions">
+        <span class="hint">Step 1 of 4</span>
+        <button class="btn-primary" id="toStep2" disabled>Continue →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="step" id="step2">
+    <div class="eyebrow">02 / Skills &amp; Interest</div>
+    <h1>What do you bring, and where's your focus?</h1>
+    <p class="sub">Pick every skill you already have or are learning — no need to be an expert. Then choose the field you want your project to live in.</p>
+    <div class="panel">
+      <div class="field">
+        <label>Technical skills for <span id="branchNameEcho">your branch</span><span class="req">*</span></label>
+        <div class="chip-grid" id="skillChips"></div>
+        <div class="custom-skill-row">
+          <input type="text" id="customSkillInput" placeholder="Add a skill not listed here…">
+          <button class="btn-ghost" id="addCustomSkill" type="button">+ Add</button>
+        </div>
+        <p class="hint" id="skillCount">0 selected</p>
+      </div>
+      <div class="field">
+        <label>Area of interest<span class="req">*</span></label>
+        <div class="interest-grid" id="interestGrid"></div>
+        <div class="field" id="interestOtherWrap" style="display:none;margin-top:14px;margin-bottom:0;">
+          <label>Please specify your area of interest<span class="req">*</span></label>
+          <input type="text" id="inpInterestOther" placeholder="e.g. Space Technology" autocomplete="off">
+        </div>
+      </div>
+      <div class="actions">
+        <span class="hint">Step 2 of 4</span>
+        <button class="btn-ghost" id="backTo1">← Back</button>
+        <button class="btn-primary" id="toStep3" disabled>Continue →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="step" id="step3">
+    <div class="eyebrow">03 / Project Level</div>
+    <h1>How challenging should this be?</h1>
+    <p class="sub">Pick the difficulty that matches where you are right now — every match we generate will be built around it.</p>
+    <div class="panel">
+      <div class="field">
+        <label>Project level<span class="req">*</span></label>
+        <div class="interest-grid" id="levelGrid"></div>
+      </div>
+      <div class="actions">
+        <span class="hint">Step 3 of 4</span>
+        <button class="btn-ghost" id="backTo2">← Back</button>
+        <button class="btn-primary" id="toStep4" disabled>Find my projects →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 4 -->
+  <section class="step" id="step4">
+    <div id="loadingView" class="loading-wrap">
+      <div class="match-anim">
+        <div class="node"></div><div class="seg"></div>
+        <div class="node b"></div><div class="seg"></div>
+        <div class="node c"></div>
+      </div>
+      <div class="loading-text" id="loadingText">MATCHING SKILLS TO PROJECTS…</div>
+    </div>
+
+    <div id="resultsView" style="display:none;">
+      <div class="results-header">
+        <div class="eyebrow">04 / Matches</div>
+        <h1 id="resultsHeading">Your project matches</h1>
+        <p class="sub" id="resultsSub"></p>
+        <div class="profile-strip" id="profileStrip"></div>
+      </div>
+      <div id="errorSlot"></div>
+      <div class="cards" id="cardsContainer"></div>
+      <footer class="done-actions">
+        <button class="btn-ghost" id="startOver">↺ Start over with a new profile</button>
+      </footer>
+    </div>
+  </section>
+
+</div>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
