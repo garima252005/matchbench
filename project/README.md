@@ -26,6 +26,13 @@ project/
         ├── main.js
         └── style.css
 ```
+## 🌐 Live Demo
+
+Matchbench is deployed on AWS Elastic Beanstalk:
+http://projectmatchbench-env.eba-e3cd97mm.ap-south-1.elasticbeanstalk.com/
+
+> Note: the Gemini API key is configured via Elastic Beanstalk's environment
+> properties in the AWS console, not from a committed `.env` file.
 
 ## 0. Prerequisites
 
